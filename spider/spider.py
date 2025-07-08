@@ -37,16 +37,14 @@ url = ""
 i = 0
 for arg in args:
     i += 1
-    if "-r" in arg:
-        depth = 5
-        print(depth)
-    elif "-l" in arg:
-        depth = int(re.search(r'\d+', arg)[0])
-        print(depth)
-    elif "-p" in arg:
-        path = arg[2:]
     if i == len(args) and "http" in arg:
         url = arg
+    elif "-r" in arg:
+        depth = 5
+    elif "-l" in arg:
+        depth = int(re.search(r'\d+', arg)[0])
+    elif "-p" in arg:
+        path = arg[2:]
 
 if i == 0:
     exit()

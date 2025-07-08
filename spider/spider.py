@@ -45,9 +45,13 @@ for arg in args:
         print(depth)
     elif "-p" in arg:
         path = arg[2:]
+    if i == len(args) and "http" in arg:
+        url = arg
+
+if i == 0:
+    exit()
 
 urls = []
-url = "https://www.scrapingbee.com/blog/selenium-python/"
 if depth > 0:
     get_url_recursive(url, depth, urls)
 else:

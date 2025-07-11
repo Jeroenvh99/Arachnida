@@ -1,1 +1,1 @@
-url = "https://www.scrapingbee.com/blog/selenium-python/"
+https://www.scrapingbee.com/blog/selenium-python/

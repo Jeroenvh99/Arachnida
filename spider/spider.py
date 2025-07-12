@@ -5,6 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import re
+import os
 
 def get_url_recursive(url, depth, urls):
     soup = BeautifulSoup(requests.get(url).text, 'html.parser')
@@ -37,10 +38,16 @@ if args.p:
     path = args.p
 url = args.url
 
+if not os.path.exists(path):
+    print("this folder doesn't exist, please choose an existing folder")
+    exit()
+
 urls = []
 get_url_recursive(url, depth, urls)
 image_name_counter = 1
 for url in urls:
+    if not (url.endswith(".jpg") or url.endswith(".jpeg") or url.endswith(".png") or url.endswith(".gif") or url.endswith(".bmp")):
+        continue
     file_name = urljoin(path, f"{image_name_counter}")
     if url[url.rfind("."):].find("/") != -1:
         continue
